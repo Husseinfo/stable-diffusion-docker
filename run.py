@@ -1,4 +1,5 @@
 #!/bin/env python
+from re import sub
 from base64 import b64decode
 from sys import stderr
 
@@ -25,7 +26,8 @@ if response.status_code != 200:
     exit()
 
 for i, image in enumerate(response.json()['output']):
-    with open(f'image_{i + 1}.jpeg', 'wb') as f:
+    _prompt = sub("[^\w]", "-", prompt)
+    with open(f'{_prompt}-{i + 1}.jpeg', 'wb') as f:
         f.write(b64decode(image.split(',')[-1]))
 
 print('Done!')
