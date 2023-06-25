@@ -57,7 +57,7 @@ Mon Sep  5 19:47:04 2022
         - `./run.py`
     - using cURL
 
-```
+```bash
  curl http://localhost:5000/predictions -X POST -H "Content-Type: application/json" \
   -d '{"input": {
     "prompt": "A penguin shaped computer",
